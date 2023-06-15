@@ -4,7 +4,7 @@ import Navbar from './nav/Navbar';
 import Routes from './routes/Routes'
 import useLocalStorage from './UseLocalStorage';
 import JoblyApi from './api';
-import UserContext from './UserContext';
+import UserContext from './users/UserContext';
 import jwt_decode from 'jwt-decode';
 
 export const TOKEN_STORAGE_ID = "jobly-token";

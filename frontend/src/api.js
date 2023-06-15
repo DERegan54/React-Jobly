@@ -55,6 +55,12 @@ class JoblyApi {
     return res.jobs;
   }
 
+  // Gets details on a job by id
+  static async getJob(id) {
+    let res = await this.request(`jobs/${id}`);
+    return res.job
+  }
+
   // Gets logged-in user, if it exists 
   static async getUser(username) {
     let res = await this.request(`users/${username}`);
@@ -73,14 +79,13 @@ class JoblyApi {
     return res.token;
   }
 
-  
-
+  // Updates user profile
+  static async updateUserProfile(username, data) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
 }
-
-// for now, put token ("testuser" / "password" on class)
-// JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-//     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-//     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  
 
 
 export default JoblyApi;

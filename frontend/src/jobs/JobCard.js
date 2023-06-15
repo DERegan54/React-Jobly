@@ -4,10 +4,11 @@ const JobCard = ({id, title, salary, equity, companyName}) => {
 
     return (
         <div className="JobCard">
-            <h4>{title}</h4>
+            <h5>{title}</h5>
             <h6>{companyName}</h6>
             <p>Salary: ${salary}</p>
             <p>Equity: {equity}%</p>
+            <br></br>
         </div>
     )
 }

@@ -17,7 +17,7 @@ const SearchForm = ({searchTerm}) => {
 
     return (
         <div className='SearchForm'>
-            <Header />
+            {/* <Header /> */}
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text"

@@ -1,7 +1,8 @@
 import React, {useContext} from 'react';
 import {Link} from 'react-router-dom';
 import Header from '../common/Header'
-import UserContext from "../UserContext";
+import SearchForm from '../common/SearchForm';
+import UserContext from "../users/UserContext";
 
 const Home = () => {
     const {currentUser} = useContext(UserContext);
@@ -20,7 +21,8 @@ const Home = () => {
     const homeIfLoggedIn = () => {
         return (
             <div className='Home-loggedIn'>
-                <h4>Welcome back {currentUser.username}!</h4>
+                <h2>Welcome back, {currentUser.username}!</h2>
+                <h5>Now let's find your dream job!</h5>
             </div>
         );
     }
