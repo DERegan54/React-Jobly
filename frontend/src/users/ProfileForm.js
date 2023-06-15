@@ -6,11 +6,10 @@ import JoblyApi from '../api';
 const ProfileForm = () => {
     const {currentUser, setCurrentUser} = useContext(UserContext);
     const initialState = {
-        username: "",
         password: "",
-        firstName: "",
-        lastName: "",
-        email: "",
+        firstName: currentUser.firstName,
+        lastName: currentUser.lastName,
+        email: currentUser.email,
     }
     const [formData, setFormData] = useState(initialState)
     const [formErrors, setFormErrors] = useState([]);
