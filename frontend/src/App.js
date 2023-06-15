@@ -10,15 +10,38 @@ import jwt_decode from 'jwt-decode';
 export const TOKEN_STORAGE_ID = "jobly-token";
 
 function App() {
+  const [userLoaded, setUserLoaded] = useState(false);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
   const [currentUser, setCurrentUser] = useState(null);
-  const [userLoaded, setUserLoaded] = useState(false);
+  const [applicationIds, setApplicationIds] = useState([]);
+
+  useEffect(() => {
+    async function getCurrentUser() {
+      if (token) {
+        try {
+          let {username} = jwt_decode(token);
+          JoblyApi.token = token;
+          console.log(token)
+          const currentUser = await JoblyApi.getUser(username);
+          setCurrentUser(currentUser)
+        } catch (error) {
+          console.error('App loadUser: problem loading', error)
+          setCurrentUser(null)
+        }
+      }
+      setUserLoaded(true);
+    }
+    setUserLoaded(false);
+    getCurrentUser()
+  }, [token]);
 
   // Handles user sign up
   async function registerUser(data) {
     try {
-      let res = await JoblyApi.registerUser(data);
-      setToken(res);
+      let token = await JoblyApi.registerUser(data);
+      setToken(token);
+      JoblyApi.token = token;
+      setCurrentUser(token);
       return {success: true};
     } catch (errors) {
       console.error("signup failed", errors);
@@ -28,10 +51,13 @@ function App() {
 
   async function loginUser(data) {
     try {
-      let res = await JoblyApi.loginUser(data);
-      setToken(res);
+      let token = await JoblyApi.loginUser(data);
+      setToken(token);
+      setCurrentUser(token)
+      return {success: true};
     } catch (errors) {
       console.error("login failed", errors);
+      return {success: false, errors};
     }
   }
 
@@ -39,33 +65,25 @@ function App() {
   function logout() {
     setCurrentUser(null);
     setToken(null);
+    setApplicationIds([]);
+  }
+  
+  const applyToJob= (id) => {
+    if(hasAppliedToJob(id)) return ;
+    JoblyApi.applyToJob(currentUser.username, id);
+    setApplicationIds([...applicationIds, id]);
+  }
+  
+  function hasAppliedToJob(id) {
+    return applicationIds.includes(id);
   }
 
-  useEffect(() => {
-      async function getCurrentUser() {
-        if (token) {
-          try {
-            let {username} = jwt_decode(token);
-            JoblyApi.token = token;
-            console.log(token)
-            const currentUser = await JoblyApi.getUser(username);
-            setCurrentUser(currentUser)
-          } catch (error) {
-            console.error('App loadUser: problem loading', error)
-            setCurrentUser(null)
-          }
-        }
-        setUserLoaded(true);
-      }
-      setUserLoaded(false);
-      getCurrentUser()
-    }, [token]
-  );
+  console.log(applicationIds);
 
   return ( 
     <BrowserRouter>
       <UserContext.Provider
-          value={{currentUser, setCurrentUser}}>
+          value={{currentUser, setCurrentUser, hasAppliedToJob, applyToJob}}>
         <div className="App">
           <Navbar logout={logout} />
           <Routes login={loginUser} signup={registerUser} />

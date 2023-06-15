@@ -61,6 +61,11 @@ class JoblyApi {
     return res.job
   }
 
+  // Applies to a job
+  static async applyToJob(username, id) {
+    await this.request(`users/${username}/jobs/${id}`, {}, "post")
+  }
+
   // Gets logged-in user, if it exists 
   static async getUser(username) {
     let res = await this.request(`users/${username}`);

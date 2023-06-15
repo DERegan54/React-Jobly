@@ -1,6 +1,6 @@
 import React from 'react'
 import {Route, Switch, Redirect} from 'react-router-dom';
-import Home from '../home/Home';
+import Home from '../Home';
 import SignupForm from '../users/SignupForm';
 import LoginForm from '../users/LoginForm';
 import CompanyList from '../companies/CompanyList';

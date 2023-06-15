@@ -3,7 +3,7 @@ import {Redirect} from 'react-router-dom';
 import SearchForm from "../common/SearchForm";
 import JoblyApi from "../api";
 import JobCardList from "./JobCardList";
-import UserContext from '../users/UserContext'; 
+
 
 
 const JobList = () => {
