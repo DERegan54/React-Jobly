@@ -12,7 +12,7 @@ const Navbar = ({logout}) => {
                 <span><button><NavLink to="/">Home</NavLink></button></span>
                 <span><button><NavLink to="/companies">Companies</NavLink></button></span>
                 <span><button><NavLink to="/jobs">Jobs</NavLink></button></span>
-                <span><button><NavLink to="/profile">{currentUser.username}'sProfile</NavLink></button></span>
+                <span><button><NavLink to="/profile">{currentUser.firstName || currentUser.username}'sProfile</NavLink></button></span>
                 <span><button><Link to="/" onClick={logout}>Log Out</Link></button></span>
             </div>
         )

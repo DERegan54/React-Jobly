@@ -3,7 +3,7 @@ import {useParams, Redirect} from "react-router-dom";
 import JoblyApi from '../api';
 import Header from "../common/Header";
 import CompanyJobs from "./CompanyJobs";
-import JobCardList from "../jobs/JobCardList";
+
 
 const CompanyDetail = () => {
     const {handle} = useParams()
@@ -13,7 +13,6 @@ const CompanyDetail = () => {
         async function getCompany() {
             let company = await JoblyApi.getCompany(handle);
             setCompany(company);
-            // setJobs(company.jobs)
         }
         getCompany();
     }, [handle]);    

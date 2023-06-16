@@ -10,6 +10,7 @@ const CompanyJobs = ({id}) => {
     const [jobs, setJobs] = useState([]);
     const {hasAppliedToJob, applyToJob} = useContext(UserContext);
     const [applied, setApplied] = useState([]);
+    
   
     useEffect(() => {
         async function getData() {
@@ -30,19 +31,16 @@ const CompanyJobs = ({id}) => {
         applyToJob(id)
         setApplied(true); 
     }
-
-    console.log(applied)
     
-
     if (!company) <Redirect to="/"></Redirect>
 
     return (
-        <div className="CompanyDetail">
+        <div className="CompanyJobs">
             <h3>Positions for Hire at {company.name}:</h3>
             <br></br>
-            <div className="CompanyDetail-jobList">
+            <div className="CompanyJobs-jobList">
                 {jobs.map(j => (
-                    <div className="CompanyDetail-job">
+                    <div className="CompanyJobs-job">
                         <p><b>Role: {`${j.title}`}</b></p>  
                         <p>Salary: ${`${j.salary}`}</p>  
                         <p>Equity: {`${j.equity}`}%</p> 
@@ -50,7 +48,7 @@ const CompanyJobs = ({id}) => {
                             className='CompanyDetail-applyButton' 
                             onClick={handleApply} 
                             disable={applied}>
-                            {applied ? "Applied!" : "Apply Now!"}
+                            {hasAppliedToJob ? "Applied!" : "Apply Now!"}
                         </button>
                         <br></br> 
                         <br></br>

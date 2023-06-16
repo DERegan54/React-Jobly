@@ -69,10 +69,10 @@ function App() {
     setApplicationIds([]);
   }
   
-  const applyToJob = (id) => {
+  const applyToJob = async (id) => {
     if(hasAppliedToJob(id)) return ;
-    JoblyApi.applyToJob(currentUser.username, id);
-    setApplicationIds([...applicationIds, id]);
+    await JoblyApi.applyToJob(currentUser.username, id);
+    setApplicationIds((applicationIds) => [...applicationIds, id]);
   }
   
   function hasAppliedToJob(id) {

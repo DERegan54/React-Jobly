@@ -29,7 +29,7 @@ const Home = () => {
         
         return (
             <div className='Home-loggedIn'>
-                <h2>Welcome, {currentUser.username}!</h2>
+                <h2>Welcome, {currentUser.firstName || currentUser.username}!</h2>
                 <h4>It's time to find your dream job!</h4>
             </div>
         );
