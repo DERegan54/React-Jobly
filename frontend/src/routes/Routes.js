@@ -1,6 +1,6 @@
 import React from 'react'
 import {Route, Switch, Redirect} from 'react-router-dom';
-import Home from '../Home';
+import Home from '../home-nav/Home';
 import SignupForm from '../users/SignupForm';
 import LoginForm from '../users/LoginForm';
 import CompanyList from '../companies/CompanyList';
@@ -8,6 +8,7 @@ import CompanyDetail from '../companies/CompanyDetail';
 import JobList from '../jobs/JobList';
 import Profile from '../users/Profile';
 import PrivateRoute from './PrivateRoute';
+
 
 const Routes = ({login, signup}) => {
 

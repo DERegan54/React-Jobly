@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {BrowserRouter} from 'react-router-dom';
-import Navbar from './nav/Navbar';
+import Navbar from './home-nav/Navbar';
 import Routes from './routes/Routes'
 import useLocalStorage from './UseLocalStorage';
 import JoblyApi from './api';
@@ -69,7 +69,7 @@ function App() {
     setApplicationIds([]);
   }
   
-  const applyToJob= (id) => {
+  const applyToJob = (id) => {
     if(hasAppliedToJob(id)) return ;
     JoblyApi.applyToJob(currentUser.username, id);
     setApplicationIds([...applicationIds, id]);

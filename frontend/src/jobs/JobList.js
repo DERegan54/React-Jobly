@@ -25,6 +25,7 @@ const JobList = () => {
     return (
         <div className="JobList">
             <SearchForm  searchTerm={search} />
+            <h2 className="JobList-h3">All Available Roles: </h2>
             {jobs.length
                ? <JobCardList jobs={jobs} />
                 : <p>Sorry, no results were found with those search terms.</p>

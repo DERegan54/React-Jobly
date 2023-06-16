@@ -19,15 +19,15 @@ const JobCard = ({id, title, salary, equity, companyName}) => {
     
     return (
         <div className="JobCard">
-            <h5>{title}</h5>
-            <h6>{companyName}</h6>
-            <p>Salary: ${salary}</p>
-            <p>Equity: {equity}%</p>
+            <h3>{`${title}`}</h3>
+            <p>Company: {`${companyName}`}</p>
+            <p>Salary: ${`${salary}`}</p>
+            <p>Equity: {`${equity}`}%</p>
             <button 
                 className='JobCard-applyButton' 
                 onClick={handleApply} 
-                disable={applied}
-            >
+                disable={applied}>
+
                 {applied ? "Applied!" : "Apply Now!"}
             </button>
         </div>
