@@ -6,6 +6,7 @@ import JoblyApi from '../api';
 const ProfileForm = () => {
     const {currentUser, setCurrentUser} = useContext(UserContext);
     const initialState = {
+        username: currentUser.username,
         password: "",
         firstName: currentUser.firstName,
         lastName: currentUser.lastName,
@@ -50,6 +51,9 @@ const ProfileForm = () => {
         <div className="ProfileForm">
             <h4>Update {currentUser.username}'s' Profile Here:</h4>
             <form onSubmit={handleSubmit}>
+                <label htmlFor="username">Username:</label>
+                <span className="ProfileForm-username">{formData.username}</span>
+                <br></br>
                 <label htmlFor="firstName">First Name: </label>
                 <input 
                     className="ProfileForm-firstNameInput"
@@ -99,7 +103,7 @@ const ProfileForm = () => {
                 {updateConfirmed
                     ? 
                     <Alert messages={["Profile successfully updated"]} /> : null}
-                <button type="submit" onSubmit={handleSubmit}>Save changes</button>
+                <button type="submit">Save changes</button>
             </form>
         </div>
     )

@@ -6,6 +6,7 @@ import useLocalStorage from './UseLocalStorage';
 import JoblyApi from './api';
 import UserContext from './users/UserContext';
 import jwt_decode from 'jwt-decode';
+import "./App.css"
 
 export const TOKEN_STORAGE_ID = "jobly-token";
 
@@ -81,15 +82,17 @@ function App() {
   console.log(applicationIds);
 
   return ( 
-    <BrowserRouter>
-      <UserContext.Provider
-          value={{currentUser, setCurrentUser, hasAppliedToJob, applyToJob}}>
-        <div className="App">
-          <Navbar logout={logout} />
-          <Routes login={loginUser} signup={registerUser} />
-        </div>
-      </UserContext.Provider>
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <UserContext.Provider
+            value={{currentUser, setCurrentUser, hasAppliedToJob, applyToJob}}>
+          <div className="App">
+            <Navbar logout={logout} />
+            <Routes login={loginUser} signup={registerUser} />
+          </div>
+        </UserContext.Provider>
+      </BrowserRouter>
+    </div>  
   );
 }
 

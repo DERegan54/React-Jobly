@@ -9,11 +9,11 @@ const Navbar = ({logout}) => {
     const navIfLoggedIn = () => {
         return (
             <div className="Navbar-loggedIn">
-                <span><NavLink to="/">Home</NavLink></span>
-                <span><NavLink to="/companies">Companies</NavLink></span>
-                <span><NavLink to="/jobs">Jobs</NavLink></span>
-                <span><NavLink to="/profile">{currentUser.username}'sProfile</NavLink></span>
-                <span><Link to="/" onClick={logout}>Log Out</Link></span>
+                <span><button><NavLink to="/">Home</NavLink></button></span>
+                <span><button><NavLink to="/companies">Companies</NavLink></button></span>
+                <span><button><NavLink to="/jobs">Jobs</NavLink></button></span>
+                <span><button><NavLink to="/profile">{currentUser.username}'sProfile</NavLink></button></span>
+                <span><button><Link to="/" onClick={logout}>Log Out</Link></button></span>
             </div>
         )
     }
@@ -21,9 +21,9 @@ const Navbar = ({logout}) => {
     const navIfLoggedOut = () => {
         return (
             <div className="Navbar-loggedOut">
-                <span><NavLink to="/">Home</NavLink></span>
-                <span><NavLink to="/login">Log In</NavLink></span>
-                <span><NavLink to="/signup">Sign Up</NavLink></span>
+                <span><button><NavLink to="/">Home</NavLink></button></span>
+                <span><button><NavLink to="/login">Log In</NavLink></button></span>
+                <span><button><NavLink to="/signup">Sign Up</NavLink></button></span>
             </div>
         );
     }

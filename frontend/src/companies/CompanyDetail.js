@@ -19,6 +19,9 @@ const CompanyDetail = () => {
         getCompany();
     }, [handle]);
 
+    function showJobs() {
+        <JobCardList jobs={company.jobs} />
+    }
     console.log(company)
     console.log(company.jobs)
     console.log(typeof company.jobs)
@@ -47,6 +50,7 @@ const CompanyDetail = () => {
             <p><b>Company Description</b>: {company.description}</p>
             <br></br>
             <h3>Positions for Hire at {company.name}:</h3>
+            {/* <button onClick='showJobs()'>See available jobs for {company.name}</button> */}
             {/* <p><JobCardList jobs={company.jobs} /></p> */}
             
         </div>           

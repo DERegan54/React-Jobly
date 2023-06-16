@@ -26,6 +26,7 @@ const LoginForm = ({login}) => {
     return (
         <div className="LoginForm">
             <Header />
+            <h3>Log in here to resume your job search:</h3>
             <form onSubmit={handleSubmit}>
                 <br></br>
                 <label htmlFor="username">Username: </label>

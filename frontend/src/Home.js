@@ -1,7 +1,11 @@
-import React, {useContext} from 'react';
-import {Link} from 'react-router-dom';
+import React, {useState, useEffect, useContext} from 'react';
+import {Link, Redirect} from 'react-router-dom';
 import Header from './common/Header';
 import UserContext from "./users/UserContext";
+import JoblyApi from "./api";
+import SearchForm from "./common/SearchForm";
+import JobCardList from './jobs/JobCardList';
+
 
 const Home = () => {
     const {currentUser} = useContext(UserContext);
@@ -9,19 +13,24 @@ const Home = () => {
     const homeIfLoggedOut = () => {
         return (
             <div className='Home-loggedOut'>
-                <h4>New to Jobly?</h4>
-                <p><Link to="/signup">Sign Up Here!</Link></p>
-                <h4>Continuing your job search?</h4>
-                <p><Link to="/login">Log In Here!</Link></p>
+                <br></br>
+                <br></br>
+                <h3>New to Jobly?</h3>
+                <button><Link to="/signup">Sign Up Here!</Link></button>
+                <br></br>
+                <br></br>
+                <h3>Continuing your job search?</h3>
+                <button><Link to="/login">Log In Here!</Link></button>
             </div>
         );
     }
 
     const homeIfLoggedIn = () => {
+        
         return (
             <div className='Home-loggedIn'>
-                <h2>Welcome back, {currentUser.username}!</h2>
-                <h5>Now let's find your dream job!</h5>
+                <h2>Welcome, {currentUser.username}!</h2>
+                <h4>It's time to find your dream job!</h4>
             </div>
         );
     }
@@ -29,7 +38,9 @@ const Home = () => {
     return (
         <div className="Home">
             <Header />
-            {currentUser ? homeIfLoggedIn() : homeIfLoggedOut()}
+            <div className='Home-container'>
+                {currentUser ? homeIfLoggedIn() : homeIfLoggedOut()}
+            </div>
        </div>
     );
 }
