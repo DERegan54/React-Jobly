@@ -24,7 +24,6 @@ const JobList = () => {
 
     return (
         <div className="JobList">
-            <h2>All Available Roles</h2>
             <SearchForm  searchTerm={search} />
             {jobs.length
                ? <JobCardList jobs={jobs} />

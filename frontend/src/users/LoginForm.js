@@ -26,38 +26,40 @@ const LoginForm = ({login}) => {
     return (
         <div className="LoginForm">
             <Header />
-            <h3>Log in here to resume your job search:</h3>
-            <form onSubmit={handleSubmit}>
-                <br></br>
-                <label htmlFor="username">Username: </label>
-                <input 
-                    className="LoginForm-usernameInput"
-                    type="text"
-                    name="username"
-                    id="username" 
-                    placeholder="Enter a username here"
-                    value={formData.username}
-                    onChange={handleChange}
-                    required>
-                </input>
-                <br></br>
-                <label htmlFor="password">Passord: </label>
-                <input 
-                    className="LoginForm-passwordInput"
-                    type="text"
-                    name="password"
-                    id="password"
-                    placeholder="Enter a password here"
-                    value={formData.password}
-                    onChange={handleChange}
-                    required>
-                </input>
-                <br></br>
-                <br></br>
-                
-                {formErrors.length ? <Alert messages={formErrors} /> : null}
-                <button onSubmit={handleSubmit}>Login!</button>
-            </form>
+                <div className='LoginForm-container'>
+                <h3 className='LoginForm-h3'>Log in here to resume your job search:</h3>
+                <form onSubmit={handleSubmit}>
+                    <br></br>
+                    <label htmlFor="username">Username: </label>
+                    <input 
+                        className="LoginForm-usernameInput"
+                        type="text"
+                        name="username"
+                        id="username" 
+                        placeholder="Enter a username here"
+                        value={formData.username}
+                        onChange={handleChange}
+                        required>
+                    </input>
+                    <br></br>
+                    <label htmlFor="password">Passord: </label>
+                    <input 
+                        className="LoginForm-passwordInput"
+                        type="text"
+                        name="password"
+                        id="password"
+                        placeholder="Enter a password here"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required>
+                    </input>
+                    <br></br>
+                    <br></br>
+                    
+                    {formErrors.length ? <Alert messages={formErrors} /> : null}
+                    <button onSubmit={handleSubmit}>Login!</button>
+                </form>
+            </div>
         </div>
     )
 }

@@ -4,6 +4,7 @@ import JobCard from "./JobCard";
 const JobCardList = ({jobs}) => {
     return (
         <div className="JobCardList">
+            <h2 className="JobCardList-h3">All Available Roles: </h2>
             {jobs.map(job => (
                 <JobCard 
                     key={job.id}

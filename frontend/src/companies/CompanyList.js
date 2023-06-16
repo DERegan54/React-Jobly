@@ -24,6 +24,7 @@ const CompanyList = () => {
     return (
         <div className="CompanyList">
             <SearchForm searchTerm={search} />
+            <h2>All Jobly Companies:</h2>
             {companies.length
                 ? (
                     <div className="CompanyList-companies">
