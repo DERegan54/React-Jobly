@@ -1,8 +1,8 @@
 import React from "react";
 import JobCard from "./JobCard";
 
-const JobCardList = ({jobs}) => {
-    return (
+const JobCardList = ({jobs, apply}) => {
+    return ( 
         <div className="JobCardList">
             {jobs.map(job => (
                 <JobCard 

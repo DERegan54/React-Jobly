@@ -5,7 +5,7 @@ import JoblyApi from "../api";
 const JobCard = ({id, title, salary, equity, companyName}) => {
     const {hasAppliedToJob, applyToJob} = useContext(UserContext);
     const [applied, setApplied] = useState();
-
+    console.log(UserContext)
     useEffect(() => {
         setApplied(hasAppliedToJob(id));
     }, [id, hasAppliedToJob]);

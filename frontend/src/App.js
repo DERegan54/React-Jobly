@@ -68,15 +68,15 @@ function App() {
     setToken(null);
     setApplicationIds([]);
   }
-  
-  const applyToJob = async (id) => {
-    if(hasAppliedToJob(id)) return ;
-    await JoblyApi.applyToJob(currentUser.username, id);
-    setApplicationIds((applicationIds) => [...applicationIds, id]);
-  }
-  
+
   function hasAppliedToJob(id) {
     return applicationIds.includes(id);
+  }
+  
+  const applyToJob = (id) => {
+    if(hasAppliedToJob(id)) return ;
+    JoblyApi.applyToJob(currentUser.username, id);
+    setApplicationIds((applicationIds) => [...applicationIds, id]);
   }
 
   console.log(applicationIds);
