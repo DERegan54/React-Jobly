@@ -15,7 +15,7 @@ function App() {
   const [userLoaded, setUserLoaded] = useState(false);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
   const [currentUser, setCurrentUser] = useState(null);
-  const [applicationIds, setApplicationIds] = useState([]);
+  const [applicationIds, setApplicationIds] = useState(new Set([]));
 
   useEffect(() => {
     async function getCurrentUser() {
@@ -71,13 +71,13 @@ function App() {
   }
 
   function hasAppliedToJob(id) {
-    return applicationIds.includes(id);
+    return applicationIds.has(id);
   }
   
   const applyToJob = (id) => {
     if(hasAppliedToJob(id)) return;
     JoblyApi.applyToJob(currentUser.username, id);
-    setApplicationIds((applicationIds) => [...applicationIds, id]);
+    setApplicationIds((applicationIds) => new Set([...applicationIds, id]));
   }
 
   console.log(applicationIds);

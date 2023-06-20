@@ -124,7 +124,6 @@ input {
   text-align: left;
   margin-bottom: 50px;
   border-bottom: 2px groove midnightblue;
-  
   padding-bottom: 20px;
   padding-right: 20px;
   padding-left: 20px;
@@ -140,6 +139,15 @@ input {
   padding-left: 20px;
 }
 
+.CompanyJobCard {
+  width: 300px;
+  text-align: left;
+  margin-bottom: 50px;
+  border-bottom: 2px groove midnightblue;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
 
 
 

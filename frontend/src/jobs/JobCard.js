@@ -5,7 +5,9 @@ import UserContext from "../users/UserContext";
 const JobCard = ({id, title, salary, equity, companyName}) => {
     const {hasAppliedToJob, applyToJob} = useContext(UserContext);
     const [applied, setApplied] = useState();
-   
+    const {currentUser} = useContext(UserContext);
+    
+    const userAppliedJobs = currentUser.applications;
     
     useEffect(() => {
         setApplied(hasAppliedToJob(id));
@@ -28,23 +30,19 @@ const JobCard = ({id, title, salary, equity, companyName}) => {
                 className='JobCard-applyButton' 
                 onClick={handleApply} 
                 disable={applied}>
-                {applied ? "Applied!" : "Apply Now!"}
+                {applied || userAppliedJobs.includes(id) ? "Applied!" : "Apply Now!"}
             </button>
         </div>
     );
 
     function formatSalary(salary) {
-        if (!salary ) {
-            return '0';
-        }
+        if (!salary ) return '0';
         const digitsRev = [];
         const salaryStr = salary.toString();
-    
         for (let i = salaryStr.length - 1; i >= 0; i--) {
             digitsRev.push(salaryStr[i]);
             if (i > 0 && i % 3 === 0) digitsRev.push(',');
         }
-    
         return digitsRev.reverse().join('');
     }
 

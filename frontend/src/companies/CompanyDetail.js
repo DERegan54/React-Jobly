@@ -11,6 +11,8 @@ const CompanyDetail = ({id}) => {
     const [company, setCompany] = useState([]);
     const [jobs, setJobs] = useState([]);
    
+    console.log(jobs);
+    
     useEffect(() => {
         async function getCompany() {
             let company = await JoblyApi.getCompany(handle);
@@ -33,7 +35,6 @@ const CompanyDetail = ({id}) => {
             {jobs.map(j => (
                 <div className="CompanyDetail-jobs"> 
                     <CompanyJobCardList jobs={jobs} />
-    
                 </div>
             ))}
         </div>           

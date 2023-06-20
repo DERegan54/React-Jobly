@@ -5,7 +5,7 @@ import UserContext from "../users/UserContext";
 const CompanyJobCard = ({id, title, salary, equity, companyName}) => {
     const {hasAppliedToJob, applyToJob} = useContext(UserContext);
     const [applied, setApplied] = useState();
-    console.log(UserContext)
+ 
     useEffect(() => {
         setApplied(hasAppliedToJob(id));
     }, [id, hasAppliedToJob]);
@@ -32,17 +32,13 @@ const CompanyJobCard = ({id, title, salary, equity, companyName}) => {
     );
 
     function formatSalary(salary) {
-        if (!salary ) {
-            return '0';
-        }
+        if (!salary ) return '0';
         const digitsRev = [];
         const salaryStr = salary.toString();
-    
         for (let i = salaryStr.length - 1; i >= 0; i--) {
             digitsRev.push(salaryStr[i]);
             if (i > 0 && i % 3 === 0) digitsRev.push(',');
         }
-    
         return digitsRev.reverse().join('');
     }
 
