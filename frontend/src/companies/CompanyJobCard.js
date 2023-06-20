@@ -2,11 +2,10 @@ import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../users/UserContext";
 
 
-const JobCard = ({id, title, salary, equity, companyName}) => {
+const CompanyJobCard = ({id, title, salary, equity, companyName}) => {
     const {hasAppliedToJob, applyToJob} = useContext(UserContext);
     const [applied, setApplied] = useState();
-   
-    
+    console.log(UserContext)
     useEffect(() => {
         setApplied(hasAppliedToJob(id));
     }, [id, hasAppliedToJob]);
@@ -19,13 +18,12 @@ const JobCard = ({id, title, salary, equity, companyName}) => {
     }
     
     return (
-        <div className="JobCard">
+        <div className="CompanyJobCard">
             <h3>{`${title}`}</h3>
-            <p>Company: {`${companyName}`}</p>
             <p>Salary: ${`${formatSalary(salary)}`}</p>
             <p>Equity: {`${formatEquity(equity)}`}%</p>
             <button 
-                className='JobCard-applyButton' 
+                className='CompanyJobCard-applyButton' 
                 onClick={handleApply} 
                 disable={applied}>
                 {applied ? "Applied!" : "Apply Now!"}
@@ -57,4 +55,4 @@ const JobCard = ({id, title, salary, equity, companyName}) => {
     }
 }
 
-export default JobCard;
+export default CompanyJobCard;

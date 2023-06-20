@@ -8,6 +8,7 @@ import UserContext from './users/UserContext';
 import jwt_decode from 'jwt-decode';
 import "./App.css"
 
+
 export const TOKEN_STORAGE_ID = "jobly-token";
 
 function App() {
@@ -74,7 +75,7 @@ function App() {
   }
   
   const applyToJob = (id) => {
-    if(hasAppliedToJob(id)) return ;
+    if(hasAppliedToJob(id)) return;
     JoblyApi.applyToJob(currentUser.username, id);
     setApplicationIds((applicationIds) => [...applicationIds, id]);
   }

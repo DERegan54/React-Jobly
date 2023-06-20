@@ -2,7 +2,8 @@ import React, {useState, useEffect} from "react";
 import {useParams, Redirect} from "react-router-dom";
 import JoblyApi from '../api';
 import Header from "../common/Header";
-import JobCardList from "../jobs/JobCardList";
+import CompanyJobCardList from "./CompanyJobCardList";
+// import JobCardList from "../jobs/JobCardList";
 
 
 const CompanyDetail = ({id}) => {
@@ -31,7 +32,8 @@ const CompanyDetail = ({id}) => {
             <br></br>
             {jobs.map(j => (
                 <div className="CompanyDetail-jobs"> 
-                    <JobCardList jobs={jobs} />
+                    <CompanyJobCardList jobs={jobs} />
+    
                 </div>
             ))}
         </div>           
