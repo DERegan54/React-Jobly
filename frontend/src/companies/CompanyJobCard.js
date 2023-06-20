@@ -3,13 +3,14 @@ import UserContext from "../users/UserContext";
 
 
 const CompanyJobCard = ({id, title, salary, equity, companyName}) => {
-    const {hasAppliedToJob, applyToJob} = useContext(UserContext);
+    const {hasAppliedToJob, applyToJob, currentUser} = useContext(UserContext);
     const [applied, setApplied] = useState();
  
     useEffect(() => {
         setApplied(hasAppliedToJob(id));
     }, [id, hasAppliedToJob]);
 
+    const userAppliedJobs = currentUser.applications;
 
     async function handleApply(evt) {
         if(hasAppliedToJob(id)) return;
@@ -26,7 +27,7 @@ const CompanyJobCard = ({id, title, salary, equity, companyName}) => {
                 className='CompanyJobCard-applyButton' 
                 onClick={handleApply} 
                 disable={applied}>
-                {applied ? "Applied!" : "Apply Now!"}
+                {applied || userAppliedJobs.includes(id) ? "Applied!" : "Apply Now!"}
             </button>
         </div>
     );

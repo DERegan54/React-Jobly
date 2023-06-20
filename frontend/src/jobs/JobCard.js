@@ -3,9 +3,8 @@ import UserContext from "../users/UserContext";
 
 
 const JobCard = ({id, title, salary, equity, companyName}) => {
-    const {hasAppliedToJob, applyToJob} = useContext(UserContext);
+    const {hasAppliedToJob, applyToJob, currentUser} = useContext(UserContext);
     const [applied, setApplied] = useState();
-    const {currentUser} = useContext(UserContext);
     
     const userAppliedJobs = currentUser.applications;
     
