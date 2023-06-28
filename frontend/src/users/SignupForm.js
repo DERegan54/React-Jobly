@@ -98,7 +98,7 @@ const SignupForm = ({signup}) => {
                     {formErrors.length ? <Alert messages={formErrors} /> : null}
                     <button type="submit" onSubmit={handleSubmit}>Sign Up!</button>
                 </form>
-                </div>
+            </div>
         </div>
     )
 }

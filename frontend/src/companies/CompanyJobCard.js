@@ -5,7 +5,7 @@ import UserContext from "../users/UserContext";
 const CompanyJobCard = ({id, title, salary, equity, companyName}) => {
     const {hasAppliedToJob, applyToJob, currentUser} = useContext(UserContext);
     const [applied, setApplied] = useState();
- 
+    console.log(hasAppliedToJob);
     useEffect(() => {
         setApplied(hasAppliedToJob(id));
     }, [id, hasAppliedToJob]);

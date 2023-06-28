@@ -42,7 +42,7 @@ const LoginForm = ({login}) => {
                         required>
                     </input>
                     <br></br>
-                    <label htmlFor="password">Passord: </label>
+                    <label htmlFor="password">Password: </label>
                     <input 
                         className="LoginForm-passwordInput"
                         type="text"

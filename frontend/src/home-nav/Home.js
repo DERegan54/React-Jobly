@@ -1,10 +1,8 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import React, {useContext} from 'react';
+import {Link} from 'react-router-dom';
 import Header from '../common/Header';
 import UserContext from "../users/UserContext";
-import JoblyApi from "../api";
-import SearchForm from "../common/SearchForm";
-import JobCardList from '../jobs/JobCardList';
+
 
 
 const Home = () => {

@@ -7,7 +7,7 @@ const JobCard = ({id, title, salary, equity, companyName}) => {
     const [applied, setApplied] = useState();
     
     const userAppliedJobs = currentUser.applications;
-    
+
     useEffect(() => {
         setApplied(hasAppliedToJob(id));
     }, [id, hasAppliedToJob]);

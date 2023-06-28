@@ -26,6 +26,7 @@ function App() {
           console.log(token)
           const currentUser = await JoblyApi.getUser(username);
           setCurrentUser(currentUser)
+          setApplicationIds(new Set(currentUser.applications));
         } catch (error) {
           console.error('App loadUser: problem loading', error)
           setCurrentUser(null)
@@ -37,13 +38,17 @@ function App() {
     getCurrentUser()
   }, [token]);
 
+  // Handles user logout
+  function logout() {
+    setCurrentUser(null);
+    setToken(null);
+  }
+
   // Handles user sign up
   async function registerUser(data) {
     try {
       let token = await JoblyApi.registerUser(data);
       setToken(token);
-      JoblyApi.token = token;
-      setCurrentUser(token);
       return {success: true};
     } catch (errors) {
       console.error("signup failed", errors);
@@ -55,7 +60,6 @@ function App() {
     try {
       let token = await JoblyApi.loginUser(data);
       setToken(token);
-      setCurrentUser(token)
       return {success: true};
     } catch (errors) {
       console.error("login failed", errors);
@@ -63,23 +67,18 @@ function App() {
     }
   }
 
-  // Handles user logout
-  function logout() {
-    setCurrentUser(null);
-    setToken(null);
-    setApplicationIds([]);
-  }
-
   function hasAppliedToJob(id) {
-    return applicationIds.has(id);
+    return  applicationIds && applicationIds.has(id);
+
   }
   
   const applyToJob = (id) => {
     if(hasAppliedToJob(id)) return;
     JoblyApi.applyToJob(currentUser.username, id);
-    setApplicationIds((applicationIds) => new Set([...applicationIds, id]));
+    setApplicationIds(new Set([...applicationIds, id]));
   }
 
+  
   console.log(applicationIds);
 
   return ( 
@@ -87,7 +86,7 @@ function App() {
       <BrowserRouter>
         <UserContext.Provider
             value={{currentUser, setCurrentUser, hasAppliedToJob, applyToJob}}>
-          <div className="App">
+          <div className="App-container">
             <Navbar logout={logout} />
             <Routes login={loginUser} signup={registerUser} />
           </div>

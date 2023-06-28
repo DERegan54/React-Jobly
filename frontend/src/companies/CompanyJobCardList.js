@@ -3,7 +3,7 @@ import CompanyJobCard from "./CompanyJobCard";
 
 const CompanyJobCardList = ({jobs, apply}) => {
     return ( 
-        <div className="JobCardList">
+        <div className="CompanyJobCardList">
             {jobs.map(job => (
                 <CompanyJobCard 
                     key={job.id}
